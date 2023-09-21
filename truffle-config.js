@@ -47,7 +47,7 @@ dotenv.config({ path: "./config.env" });
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-const { MNEMONIC, PROJECT_ID } = process.env;
+const { MNEMONIC, PROJECT_ID, NETWORK } = process.env;
 
 module.exports = {
   /**
@@ -86,11 +86,7 @@ module.exports = {
     // Useful for deploying to a public network.
     // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
     sepolia: {
-      provider: () =>
-        new HDWalletProvider(
-          MNEMONIC,
-          `https://sepolia.infura.io/v3/f38848196de84f02983bbc4a56fef5a6`
-        ),
+      provider: () => new HDWalletProvider(MNEMONIC, NETWORK),
       network_id: 11155111, // Sepolia's id
       gas: 4000000, // Adjust the gas limit as per your requirements
       gasPrice: 10000000000, // Set the gas price to an appropriate value
