@@ -12,6 +12,6 @@ contract DynamicArrays {
         return arr.length;
     }
     function popElement() public {
-        arr.pop();
+        arr.pop(); // * Pop element from last.
     }
 }
